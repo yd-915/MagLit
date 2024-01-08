@@ -33,6 +33,12 @@ New Features
 
 ## Self Hosting
 
+**PREPARE**
+
+MagLit uses Firebase Firestore as a database. You must first create a new Firebase project, then a file with the name `.env.local` in root directory of the project and fill the details as mentioned in `.env.local.example`.
+
+This step is a **hard requeriment** and any change to this file, **requires a rebuild to the project from scratch** (either through npm install/npm run dev or by using the docker steps)
+
 Clone the project and install dependencies using:
 
 ```bash
@@ -50,23 +56,16 @@ npm run dev
 **DOCKER:**
 
 ```
-# TO BUILD IMAGE
-npm run build-docker-image
-
-# TO START THE DOCKER IMAGE SERVER
-npm run start-docker-image
+#  BUILD AND RUN IMAGE USING NPM
+npm run docker
 ```
 
-You can also use a pre-built image (supports amd64 and arm64), which contains the code that resides on `main`:
+OR
 
 ```
-docker pull ghcr.io/nayamamarshe/maglit:main
-```
-
-The `docker-compose` file is setup to use the remote image. Just remember to fill the firebase environment variables. You can start using docker compose with:
-
-```
-docker compose up -d
+# MANUALLY BUILD AND RUN IMAGE USING COMPOSE
+sudo docker-compose build
+sudo docker-compose up -d
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -77,11 +76,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 The `pages/api` directory is mapped to `/api/*`. Read more about [API routes](https://nextjs.org/docs/api-routes/introduction).
 
-MagLit uses Firebase Firestore as a database. You must first create a new Firebase project, then a file with the name `.env.local` in root directory of the project and fill the details as mentioned in `.env.local.example`.
-
 ## If you like the project
-
-ETH (ERC-20) Wallet: **0x14858f5334ea1014e68212c2d4b32792d137f256**
 
 <a href="https://www.buymeacoffee.com/fossisthefuture">
 <img alt="bmc-button" src="https://user-images.githubusercontent.com/25067102/154570688-9e143f2b-fee3-4b05-a9d2-a7a3013b2b51.png" />
